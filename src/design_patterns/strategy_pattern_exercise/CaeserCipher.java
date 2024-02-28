@@ -4,17 +4,26 @@ import java.util.Arrays;
 
 public class CaeserCipher implements CipherStrategy {
 
+    private String input;
+
+    public CaeserCipher(String input){
+        this.input = input;
+    }
+
     @Override
-    public String encode(String input) {
+    public String encode() {
         char[] characters = input.toUpperCase().toCharArray();
-        int stepNumber = 5;
+        int stepNumber = 1;
 
         if(stepNumber < 0 || stepNumber > 26){
             System.out.println("number outside of alphabet!");
             return "";
         }
         for(int count = 0; count < characters.length; count++){
-            if(characters[count] + stepNumber > 90){
+            if(characters[count] < 65 || characters[count] > 90){
+                //do nothing
+            }
+            else if(characters[count] + stepNumber > 90){
                 characters[count] = (char) (characters[count] + stepNumber - 26);
             }
             else{
