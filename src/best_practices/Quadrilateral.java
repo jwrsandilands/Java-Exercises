@@ -19,21 +19,15 @@ public class Quadrilateral {
     String colour;
 
     public Quadrilateral() {
-        this.height = 10;
-        this.width = 10;
-        this.colour = "Black";
+        this(10);
     }
 
     public Quadrilateral(int sideLength) {
-        this.height = sideLength;
-        this.width = sideLength;
-        this.colour = "Black";
+        this(sideLength, sideLength);
     }
 
     public Quadrilateral(int height, int width) {
-        this.height = height;
-        this.width = width;
-        this.colour = "Black";
+        this(height, width, "Black");
     }
 
     public Quadrilateral(int height, int width, String colour) {
@@ -41,5 +35,4 @@ public class Quadrilateral {
         this.width = width;
         this.colour = colour;
     }
-
 }

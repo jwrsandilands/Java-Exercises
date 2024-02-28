@@ -1,16 +1,27 @@
 package design_patterns.strategy_pattern_exercise;
 
+import java.util.Arrays;
+
 public class CaeserCipher implements CipherStrategy {
 
     @Override
     public String encode(String input) {
-        /*
-        implement a caesar cipher here - where letters are shifted along x number of values in alphabet
-        x can be whatever you like
-        If you go beyond the end of the alphabet, you should wrap back around to the front
-        e.g. 'z' on a cipher with a shift of 2 should become 'b'
-         */
+        char[] characters = input.toUpperCase().toCharArray();
+        int stepNumber = 5;
 
-        return null;
+        if(stepNumber < 0 || stepNumber > 26){
+            System.out.println("number outside of alphabet!");
+            return "";
+        }
+        for(int count = 0; count < characters.length; count++){
+            if(characters[count] + stepNumber > 90){
+                characters[count] = (char) (characters[count] + stepNumber - 26);
+            }
+            else{
+                characters[count] += (char) stepNumber;
+            }
+        }
+
+        return Arrays.toString(characters);
     }
 }

@@ -8,9 +8,18 @@ This class is okay, but would be a good use case for applying the Singleton patt
 multiple GuessTheNumber instances, as I'll never want to run two games simultaneously. See if you can refactor this
 class to follow the singleton pattern.
  */
-public class GuessTheNumber {
+public final class GuessTheNumber {
 
-    public GuessTheNumber() {}
+    private static GuessTheNumber INSTANCE;
+    private GuessTheNumber() {}
+
+    public static GuessTheNumber getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new GuessTheNumber();
+        }
+        return INSTANCE;
+    }
+
     public void playGame() {
         Random generator = new Random();
         Scanner fromUser = new Scanner(System.in);
